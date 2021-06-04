@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img id="foto" src="pngegg.png" alt="">
+
+    <h1>JO KEN PÔ</h1>
+
+    <button id="pedra" onclick="pedra()">PEDRA</button>
+    <button id="papel" onclick="papel()">PAPEL</button>
+    <button id="tesoura" onclick="tesoura()">TESOURA</button>
+
+    <h2 class="jog">JOGADOR ESCOLHEU: <span style="color: red;" id="escJog"></span> </h2>
+
+    <p style="text-align: center; font-size: 6rem;">X</p>
+
+    <h2 class="jog">JAFAR ESCOLHEU: <span style="color: blue;" id="escCPU"></span> </h2>
+
+    <h2 id="res"></h2>
+
+</body>
+
+<script>
+    function pedra(){
+        document.getElementById("escJog").innerText = "PEDRA";
+        let t = aleatorio();
+        jogo(t, 0)
+    }
+
+    function papel(){
+        document.getElementById("escJog").innerText = "PAPEL";
+        let t = aleatorio();
+        jogo(t, 1)  
+    }
+
+    function tesoura(){
+        document.getElementById("escJog").innerText = "TESOURA";
+         let t = aleatorio();
+         jogo(t, 2)   
+    }
+
+    function aleatorio(){
+        let ale = Math.floor(Math.random() * 3);
+        
+        if(ale == 0){ 
+            document.getElementById("escCPU").innerText = "PEDRA"
+            return 0;
+        }
+        else if(ale == 1) {
+            document.getElementById("escCPU").innerText = "PAPEL"
+            return 1;
+        }
+        else{
+            document.getElementById("escCPU").innerText = "TESOURA"
+            return 2;
+        }
+    }
+
+    function jogo(cpu, jog){
+        if(cpu == 0 && jog == 0){
+            document.getElementById("res").innerText = "EMPATE"
+            document.getElementById("foto").src = "pngegg (1).png"
+        }
+        else if(cpu == 0 && jog == 1){
+            document.getElementById("res").innerText = "JOGADOR WIN"
+            document.getElementById("foto").src = "pngegg (3).png"
+        }
+
+        else if(cpu == 0 && jog == 2){
+            document.getElementById("res").innerText = "JAFAR WIN"
+            document.getElementById("foto").src = "pngegg (2).png"
+        }
+
+        else if(cpu == 1 && jog == 0){
+            document.getElementById("res").innerText = "JAFAR WIN"
+            document.getElementById("foto").src = "pngegg (2).png"
+        }
+        else if(cpu == 1 && jog == 1){
+            document.getElementById("res").innerText = "EMPATE"
+            document.getElementById("foto").src = "pngegg (1).png"
+        }
+
+        else if(cpu == 1 && jog == 2){
+            document.getElementById("res").innerText = "JOGADOR WIN"
+            document.getElementById("foto").src = "pngegg (3).png"
+        }
+
+        if(cpu == 2 && jog == 0){
+            document.getElementById("res").innerText = "JOGADOR WIN"
+            document.getElementById("foto").src = "pngegg (3).png"
+        }
+        else if(cpu == 2 && jog == 1){
+            document.getElementById("res").innerText = "JAFAR WIN"
+            document.getElementById("foto").src = "pngegg (2).png"
+        }
+
+        else if(cpu == 2 && jog == 2){
+            document.getElementById("res").innerText = "EMPATE"
+            document.getElementById("foto").src = "pngegg (1).png"
+        }
+    }
+
+    
+</script>
+</html>
